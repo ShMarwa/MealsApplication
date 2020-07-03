@@ -20,7 +20,7 @@ function MealsNavigator() {
           title: "Meal Categories",
           headerStyle: {
             backgroundColor:
-              Platform.OS === "android" ? Colors.primaryColor : "black",
+              Platform.OS === "android" ? Colors.primaryColor : "",
           },
           headerTintColor:
             Platform.OS === "android" ? "white" : Colors.primaryColor,
@@ -36,7 +36,7 @@ function MealsNavigator() {
           title: route.params.title,
           headerStyle: {
             backgroundColor:
-              Platform.OS === "android" ? Colors.primaryColor : "white",
+              Platform.OS === "android" ? Colors.primaryColor : "",
           },
           headerTintColor:
             Platform.OS === "android" ? "white" : Colors.primaryColor,

@@ -13,20 +13,17 @@ const fetchFonts = () => {
   });
 };
 export default function App() {
-  // const [fontLoaded, setFontLoaded] = useState(false);
+  const [fontLoaded, setFontLoaded] = useState(false);
 
-  // if (!fontLoaded) {
-  //   return (
-  //     <AppLoading
-  //       startAsync={fetchFonts}
-  //       onFinish={() => setFontLoaded(true)}
-  //       onError={(err) => console.log(err)}
-  //     />
-  //   );
-  // }
-
-  //   return <MealsNavigator />;
-  // }
+  if (!fontLoaded) {
+    return (
+      <AppLoading
+        startAsync={fetchFonts}
+        onFinish={() => setFontLoaded(true)}
+        onError={(err) => console.log(err)}
+      />
+    );
+  }
 
   return (
     <NavigationContainer>

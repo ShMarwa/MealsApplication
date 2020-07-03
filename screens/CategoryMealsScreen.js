@@ -8,9 +8,7 @@ const CategoryMealScreen = ({ route, navigation }) => {
   // const catId = props.navigation.getParam("categoryId");
   const { categoryId } = route.params;
   const selectedCategory = CATEGORIES.find((cat) => cat.id === categoryId);
-  CategoryMealScreen.navigationOptions = {
-    title: "Marwa",
-  };
+
   return (
     <View style={styles.screen}>
       <Text>The Category Meal Screen!</Text>
