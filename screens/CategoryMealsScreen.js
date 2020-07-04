@@ -1,31 +1,32 @@
 import React from "react";
 import { View, Text, Button, StyleSheet } from "react-native";
 
-import { CATEGORIES } from "../data/dummy-data";
+import { CATEGORIES, MEAL } from "../data/dummy-data";
 import Colors from "../constants/Colors";
+import { FlatList } from "react-native-gesture-handler";
 
 const CategoryMealScreen = ({ route, navigation }) => {
-  // const catId = props.navigation.getParam("categoryId");
+  const renderMealItem = (itemData) => {
+    return (
+      <View>
+        <Text>{itemData.item.title}</Text>
+      </View>
+    );
+  };
+
   const { categoryId } = route.params;
   const selectedCategory = CATEGORIES.find((cat) => cat.id === categoryId);
 
+  const displayMeals = Meals.filter(
+    (meal) => meal.categoryIds.indexof(catId) >= 0
+  );
+
   return (
     <View style={styles.screen}>
-      <Text>The Category Meal Screen!</Text>
-      <Text>{selectedCategory.title} </Text>
-      <Button
-        title={"Go to Details"}
-        onPress={() => {
-          props.navigation.navigate({
-            routeName: "MealDetail",
-          });
-        }}
-      />
-      <Button
-        title="Go Back"
-        onPress={() => {
-          props.navigation.pop();
-        }}
+      <FlatList
+        data={displayMeals}
+        keyExtractor={(item, index) => item.id}
+        renderItem={renderMealItem}
       />
     </View>
   );
@@ -38,10 +39,5 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
 });
-
-// {
-//   //const { routeName } = navigation.state.routes[navigation.state.index];
-
-//   // You can do whatever you like here to pick the title based on the route name
 
 export default CategoryMealScreen;
