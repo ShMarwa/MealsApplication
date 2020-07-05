@@ -1,14 +1,19 @@
 import React from "react";
 import { View, Text, Button, StyleSheet } from "react-native";
 
-const MealDetailScreen = (props) => {
+import { MEALS } from "../data/dummy-data";
+
+const MealDetailScreen = ({ route, navigation }) => {
+  const { mealId } = route.params;
+  const selectedMeal = MEALS.find((meal) => meal.id === mealId);
+
   return (
     <View style={styles.screen}>
-      <Text>The Meal Detail Screen!</Text>
+      <Text>{selectedMeal.title}</Text>
       <Button
         title="Go Back to Categories"
         onPress={() => {
-          props.navigation.popToTop();
+          navigation.popToTop();
         }}
       />
     </View>
