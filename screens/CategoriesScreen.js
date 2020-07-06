@@ -10,6 +10,7 @@ import {
 
 import { CATEGORIES } from "../data/dummy-data";
 import CategoryGridTile from "../component/CategoryGridTile";
+import { useLinkProps } from "@react-navigation/native";
 
 const CategoriesScreen = ({ navigation }) => {
   const renderGridItem = (itemData) => {

@@ -185,7 +185,7 @@ function FilterNavigator() {
       <Stack.Screen
         name="Filters"
         component={FiltersScreen}
-        options={(navData) => ({
+        options={(navData, route) => ({
           headerTitle: "Your Favorites",
           headerLeft: () => (
             <HeaderButtons HeaderButtonComponent={HeaderButton}>
@@ -195,6 +195,18 @@ function FilterNavigator() {
                 onPress={() => {
                   navData.navigation.toggleDrawer();
                 }}
+              />
+            </HeaderButtons>
+          ),
+
+          headerRight: () => (
+            <HeaderButtons HeaderButtonComponent={HeaderButton}>
+              <Item
+                title="Save"
+                iconName="ios-save"
+                onPress={
+                  navData.route.params ? navData.route.params.save : null
+                }
               />
             </HeaderButtons>
           ),
