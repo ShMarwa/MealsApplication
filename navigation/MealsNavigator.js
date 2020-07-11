@@ -2,7 +2,6 @@
 import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createDrawerNavigator } from "@react-navigation/drawer";
-import { DrawerActions } from "@react-navigation/native";
 
 import { Ionicons } from "@expo/vector-icons";
 
@@ -66,16 +65,13 @@ function MealsNavigator() {
         name="MealDetail"
         component={MealDetailScreen}
         options={({ route }) => ({
-          headerTitle: MEALS.find((meal) => meal.id === route.params.mealId)
-            .title,
+          headerTitle: route.params.title,
           headerRight: (props) => (
             <HeaderButtons HeaderButtonComponent={HeaderButton}>
               <Item
                 title="Favorite"
-                iconName="ios-star"
-                onPress={() => {
-                  console.log("Mark as favorite!");
-                }}
+                iconName={route.params.isFav ? "ios-star" : "ios-star-outline"}
+                onPress={route.params.toggleFav}
               />
             </HeaderButtons>
           ),
@@ -128,10 +124,8 @@ function FavNavigator() {
             <HeaderButtons HeaderButtonComponent={HeaderButton}>
               <Item
                 title="Favorite"
-                iconName="ios-star"
-                onPress={() => {
-                  console.log("Mark as favorite!");
-                }}
+                iconName={route.params.isFav ? "ios-star" : "ios-star-outline"}
+                onPress={route.params.toggleFav}
               />
             </HeaderButtons>
           ),
